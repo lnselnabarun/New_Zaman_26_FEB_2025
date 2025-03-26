@@ -241,10 +241,11 @@ export default class OrderPlacement extends Component {
   render() {
     return (
       <>
+      <SafeAreaView style={{flex:1}}>
         <ImageBackground
           source={require('../../src/assets/images/Zaman_BG1.jpg')}
           style={Styles.login_main}>
-          <SafeAreaView style={Styles.dashboard_main_header}>
+          <View style={Styles.dashboard_main_header}>
             <View style={Styles.dashboard_main_headers}>
               <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                 <Image
@@ -275,7 +276,7 @@ export default class OrderPlacement extends Component {
                 Order Placement
               </Text>
             </View>
-          </SafeAreaView>
+          </View>
           <ScrollView>
             <View
               style={{
@@ -353,8 +354,6 @@ export default class OrderPlacement extends Component {
                 borderRadius: 25,
                 padding: '5%',
                 margin: '5%',
-                // alignContent: 'center',
-                // justifyContent: "center",
                 borderWidth: 1,
                 borderRadius: 20,
                 borderColor: '#000',
@@ -432,51 +431,6 @@ export default class OrderPlacement extends Component {
                 {this.state.dispatchModeError}
               </Text>
             </View>
-
-            {/* <View style={{
-    backgroundColor: "#fff",
-        height: 110,
-        borderRadius: 25,
-        padding: '5%',
-        marginLeft: '5%',
-        marginRight: '5%',
-        marginTop: '1%',
-        // alignContent: 'center',
-        // justifyContent: "center",
-        borderWidth: 1,
-        borderRadius: 20,
-        borderColor: '#000',
-        borderBottomWidth: 0,
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.9,
-        shadowRadius: 20,
-        elevation: 5,
-  }}>
-
-
-<Text style={{paddingLeft:13,color: 'black', fontSize: 13, fontWeight: 'bold'}}>Selected Courier Mode</Text>
-
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('collectionAndSKUFilter',{onSelect: this.onSelect,
-                flagtoShow: 'courierMode', navigationFlaggg: 'createOrder'
-            })}>
-<View style={{flexDirection:'row', alignItems: 'center', justifyContent: 'center', height: 40,
-      margin: 0,
-      marginTop: 10}}>
-            <View style={{flex:1, maxWidth: 414, backgroundColor: null, flexDirection:'row', justifyContent:'space-between'}}>
-                <Text style={{paddingLeft:13,color: 'gray', fontSize: 20,}}>{this.state.SKUstring}</Text>
-                <View style={{width:15, height:15, justifyContent: 'flex-end', marginRight: 25, marginTop: 9}}>
-                  <Image source={require("../../src/assets/images/outline_chevron_right_black_48.png")} style={{width:26, height:26,}} />
-                </View>
-
-                
-                
-              </View>
-              </View>
-              </TouchableOpacity>
-
-        </View> */}
-
             <View
               style={{
                 backgroundColor: '#fff',
@@ -562,121 +516,7 @@ export default class OrderPlacement extends Component {
             </TouchableOpacity>
           </ScrollView>
 
-          {/* <View style={{
-    backgroundColor: "#fff",
-        height: 450,
-        borderRadius: 25,
-        padding: '5%',
-        margin: '5%',
-        // alignContent: 'center',
-        // justifyContent: "center",
-        borderWidth: 1,
-        borderRadius: 20,
-        borderColor: '#000',
-        borderBottomWidth: 0,
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.9,
-        shadowRadius: 20,
-        elevation: 5,
-  }}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('collectionAndSKUFilter',{onSelect: this.onSelect,
-                flagtoShow: 'collection', navigationFlaggg: 'createOrder'
-            })}>
-<View style={{flexDirection:'row', alignItems: 'center', justifyContent: 'center', height: 40,
-      margin: 0,
-      marginTop: 10}}>
-            <View style={{flex:1, maxWidth: 414, backgroundColor: null, flexDirection:'row', justifyContent:'space-between'}}>
-                <Text style={{paddingLeft:13,color: 'gray', fontSize: 12,}}>{this.state.collectionString}</Text>
-                <View style={{width:15, height:15, justifyContent: 'flex-end', marginRight: 25, marginTop: 6}}>
-                  <Image source={require("../../src/assets/images/outline_chevron_right_black_48.png")} style={{width:26, height:26,}} />
-                </View>
-
-                
-                
-              </View>
-              </View>
-              </TouchableOpacity>
-
-              <View style={{marginLeft:13,marginTop: 3, backgroundColor: 'gray', marginRight: 13, height: 1, marginBottom: 0}}></View>
-
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('collectionAndSKUFilter',{onSelect: this.onSelect,
-                flagtoShow: 'sku', navigationFlaggg: 'createOrder'
-            })}>
-<View style={{flexDirection:'row', alignItems: 'center', justifyContent: 'center', height: 40,
-      margin: 0,
-      marginTop: 10}}>
-            <View style={{flex:1, maxWidth: 414, backgroundColor: null, flexDirection:'row', justifyContent:'space-between'}}>
-                <Text style={{paddingLeft:13,color: 'gray', fontSize: 12,}}>{this.state.SKUstring}</Text>
-                <View style={{width:15, height:15, justifyContent: 'flex-end', marginRight: 25, marginTop: 6}}>
-                  <Image source={require("../../src/assets/images/outline_chevron_right_black_48.png")} style={{width:26, height:26,}} />
-                </View>
-
-                
-                
-              </View>
-              </View>
-              </TouchableOpacity>
-
-              <View style={{marginLeft:13,marginTop: 3, backgroundColor: 'gray', marginRight: 13, height: 1, marginBottom: 0}}></View>
-
-<TextInput
-            placeholder="Quantity *"
-            // onChangeText={text => setTaskti(text)}
-            style={Styles.login_text_input}
-            autoCapitalize='none'
-            placeholderTextColor='grey'
-            keyboardType='number-pad'
-          />
-
-<Text style={{fontSize:15,
-        color:'grey',
-        marginLeft: 13,
-        marginTop:20,}}>Remark : </Text>
-
-<TextInput style={{
-    
-    width: null,
-    marginLeft: 13,
-    borderRadius: 0,
-    marginRight: 13,
-    backgroundColor: 'white',
-    fontSize: 12,
-    height: 60,
-    color: 'black',
-    marginTop: 10,
-    shadowColor: 'grey',
-      shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 1,
-      shadowRadius: 3,
-      padding: 5,
-      paddingTop: 5,
-      borderColor: 'grey',
-      borderWidth: .6
-    
-    }}
-                multiline={true}
-     numberOfLines={5}
-     textAlignVertical={'top'}
-                // value = {'SDF Building, 4th Floor, Software Technology Park, GP Block, Sector V, Bidhannagar, Kolkata, West Bengal 700091'}
-                ></TextInput>
-
-
-          <TouchableOpacity
-            style={{
-              width: '94%',
-              height: 55,
-              backgroundColor: '#252324',
-              marginTop: 80,
-              color: '#f55656',
-              alignSelf:"center",
-              marginBottom: 14,
-              borderRadius: 10
-            }}
-            onPress={() => Login()}>
-            <Text style={Styles.login_text}>Submit</Text>
-          </TouchableOpacity>
-        </View> */}
+          
 
           <Modal
             transparent={true}
@@ -712,6 +552,7 @@ export default class OrderPlacement extends Component {
             </View>
           </Modal>
         </ImageBackground>
+        </SafeAreaView>
       </>
     );
   }

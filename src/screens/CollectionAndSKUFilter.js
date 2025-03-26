@@ -49,6 +49,7 @@ export default class CollectionAndSKUFilter extends Component {
   render() {
     return (
       <>
+      <SafeAreaView style ={{flex:1}}>
         <ImageBackground
           source={require('../../src/assets/images/Zaman_BG1.jpg')}
           style={{flex: 1, flexDirection: 'column'}}>
@@ -142,6 +143,7 @@ export default class CollectionAndSKUFilter extends Component {
             </View>
           </Modal>
         </ImageBackground>
+        </SafeAreaView>
       </>
     );
   }

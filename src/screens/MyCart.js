@@ -67,9 +67,21 @@ export default class MyCart extends Component {
       console.log(JSON.parse(myArray));
       var myArray1 = JSON.parse(myArray);
 
-      this.setState({
-        itemList: myArray1,
-      });
+      // Replace this line:
+      // this.setState({
+      //   itemList: myArray1,
+      // });
+
+      // With this code:
+      if (myArray1 && myArray1.length > 0) {
+        const uniqueItems = Array.from(
+          new Map(myArray1.map(item => [item.sku, item])).values(),
+        );
+
+        this.setState({
+          itemList: uniqueItems,
+        });
+      }
     } else {
       console.log('enter 2');
       Toast.show('Your cart is empty', Toast.CENTER);
@@ -104,7 +116,7 @@ export default class MyCart extends Component {
   goToOrderSubmit = async () => {
     if (this.state.itemList.length == 0) {
       Toast.show(
-        'Please add atleast one item in cart before you proceed',
+        'Please add at least one item in cart before you proceed',
         Toast.CENTER,
       );
     } else {
@@ -188,7 +200,9 @@ export default class MyCart extends Component {
               keyboardShouldPersistTaps="handled"
               data={this.state.itemList}
               renderItem={this.renderHorizontalItem}
-              keyExtractor={(item, index) => index}
+              keyExtractor={item =>
+                item.id || item.sku || String(Math.random())
+              }
             />
           </View>
 
@@ -393,16 +407,6 @@ export default class MyCart extends Component {
           </View>
         </View>
 
-        {/* { (this.state['addToCart'+String(index)] == undefined || this.state['addToCart'+String(index)] == 'Add to Cart') &&  <TouchableOpacity style={{ height: 40, alignSelf: 'flex-end',
-  marginTop:-8,borderRadius:5,width: 160, backgroundColor: 'green', width: 150, marginBottom: 15, marginRight: 13}}
-   onPress ={() => this.addToCartPressed('Remove from Cart', index)}>
-                <Text style={{  fontSize:15,fontWeight: "bold",color:'white',
-   textAlign: 'center', textAlignVertical: 'center', padding: 10,
-  color: 'white', textAlignVertical: 'center'}}>
-      {this.state['addToCart'+String(index)] ?? 'Add to Cart'}
-  </Text> 
-  </TouchableOpacity> } */}
-
         <TouchableOpacity
           style={{
             height: 40,
@@ -415,10 +419,7 @@ export default class MyCart extends Component {
             marginBottom: 15,
             marginRight: 13,
           }}
-          onPress={() => {
-            this.addToCartPressed('Add to Cart', index);
-            this.alertModal();
-          }}>
+          onPress={() => this.addToCartPressed('Remove from Cart', index)}>
           <Text
             style={{
               fontSize: 15,
@@ -440,19 +441,41 @@ export default class MyCart extends Component {
   addToCartPressed = (status, index) => {
     console.log('addToCartPressed: ', status, index);
 
-    // this.setState({ ['addToCart'+String(index)]: status})
+    // Create a copy of the array
+    var array = [...this.state.itemList];
 
-    var array = [...this.state.itemList]; // make a separate copy of the array
+    // Get the item being removed (for the message)
+    const removedItem = array[index];
+
+    // Remove the item from the array
     array.splice(index, 1);
-    this.setState({itemList: array});
 
-    console.log('cart item array: ', this.state.cartArray);
+    // Update the state with the new array
+    this.setState({itemList: array}, () => {
+      // Show a relevant message after removing the item
+      Toast.show('Item removed from cart', Toast.CENTER);
+    });
+
+    // Save the updated cart to AsyncStorage
+    this.saveCartToStorage(array);
   };
 
-  alertModal = () => {
+  saveCartToStorage = async cartItems => {
+    try {
+      const username = await AsyncStorage.getItem('username');
+      await AsyncStorage.setItem(
+        username + 'cartArray',
+        JSON.stringify(cartItems),
+      );
+    } catch (error) {
+      console.log('Error saving cart:', error);
+    }
+  };
+
+  alertModal = (message = 'Order submitted successfully!') => {
     Alert.alert(
       'Success',
-      'Order submitted successfully!',
+      message,
       [
         {
           text: 'OK',

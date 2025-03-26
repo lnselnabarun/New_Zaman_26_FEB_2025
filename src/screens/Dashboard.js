@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   StyleSheet,
   Button,
+  Platform,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-simple-toast';
@@ -18,6 +19,7 @@ import Modal from 'react-native-modal';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { AuthContext } from '../navigations/AuthProvider';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { plugins } from '../../babel.config';
 
 const Dashboard = () => {
   const {logout} = useContext(AuthContext);
@@ -65,7 +67,7 @@ const Dashboard = () => {
     return () => {
       console.log('componentWillUnmount called');
     };
-  }, []);
+  }, [countArr]);
 
   const loadData = async () => {
     console.log('loadData111111 called:::: ');
@@ -132,6 +134,7 @@ const Dashboard = () => {
 
   return (
     <>
+    <SafeAreaView style={{flex:1}}>
       <ImageBackground
         source={require('../../src/assets/images/Zaman_BG1.jpg')}
         style={{flex: 1, flexDirection: 'column'}}>
@@ -663,6 +666,7 @@ const Dashboard = () => {
           </Modal>
         </View>
       </ImageBackground>
+      </SafeAreaView>
     </>
   );
 };
@@ -671,6 +675,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+
   },
   modal: {
     justifyContent: 'flex-start',
@@ -685,6 +690,7 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     width: '70%', // Adjust width as needed
     height: '100%', // Takes full height of screen
+    paddingTop:Platform.OS === 'ios' ? 80:10
   },
   closeText: {
     alignSelf: 'flex-end',

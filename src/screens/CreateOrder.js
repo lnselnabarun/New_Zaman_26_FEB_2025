@@ -219,54 +219,56 @@ export default class CreateOrder extends Component {
   render() {
     return (
       <>
-        <ImageBackground
-          source={require('../../src/assets/images/Zaman_BG1.jpg')}
-          style={{flex: 1, flexDirection: 'column'}}>
-          <SafeAreaView
-            style={{
-              backgroundColor: '#252324',
-              height: 60,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              padding: 12,
-              alignItems: 'center',
-            }}>
+        <SafeAreaView style={{flex: 1}}>
+          <ImageBackground
+            source={require('../../src/assets/images/Zaman_BG1.jpg')}
+            style={{flex: 1, flexDirection: 'column'}}>
             <View
               style={{
                 backgroundColor: '#252324',
-                // height: 60,
+                height: 60,
                 flexDirection: 'row',
                 justifyContent: 'space-between',
+                padding: 12,
+                alignItems: 'center',
               }}>
-              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                <Image
-                  style={{
-                    width: 30,
-                    height: 30,
-                    marginStart: 10,
-                    // marginTop: 20,
-                    backgroundColor: 'transparent',
-                    alignSelf: 'center',
-                    marginTop: 4,
-                    tintColor: 'white',
-                  }}
-                  source={require('../../src/assets/images/back.png')}
-                  // resizeMode="contain"dashboard_main_btn
-                />
-              </TouchableOpacity>
-
-              <Text
+              <View
                 style={{
-                  fontSize: 15,
-                  color: 'white',
-                  marginLeft: 23,
-                  marginTop: 6,
-                  fontWeight: '800',
-                  fontSize: 19,
+                  backgroundColor: '#252324',
+                  // height: 60,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
                 }}>
-                Create Order
-              </Text>
-              {/* <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.goBack()}>
+                  <Image
+                    style={{
+                      width: 30,
+                      height: 30,
+                      marginStart: 10,
+                      // marginTop: 20,
+                      backgroundColor: 'transparent',
+                      alignSelf: 'center',
+                      marginTop: 4,
+                      tintColor: 'white',
+                    }}
+                    source={require('../../src/assets/images/back.png')}
+                    // resizeMode="contain"dashboard_main_btn
+                  />
+                </TouchableOpacity>
+
+                <Text
+                  style={{
+                    fontSize: 15,
+                    color: 'white',
+                    marginLeft: 23,
+                    marginTop: 6,
+                    fontWeight: '800',
+                    fontSize: 19,
+                  }}>
+                  Create Order
+                </Text>
+                {/* <TouchableOpacity>
                   <Image
                     style={{
                       width: 40,
@@ -280,167 +282,154 @@ export default class CreateOrder extends Component {
                     // resizeMode="contain"dashboard_main_btn
                   />
                 </TouchableOpacity> */}
+              </View>
             </View>
-          </SafeAreaView>
-          {/* <View style={{
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignSelf: 'center',
-    alignItems: 'center',
-  }}>
-          <Image
-            style={{width: 120, height: 120, marginTop: 20}}
-            source={require('../../src/assets/images/zaman_logo.jpg')}
-          />
-          <Text style={{
-    fontSize: 40,
-    alignSelf: 'center',
-    margin: 10
-  }}>Change Password</Text>
-        </View> */}
-          <ScrollView>
-            <KeyboardAvoidingView
-              keyboardVerticalOffset={50}
-              style={{
-                backgroundColor: '#fff',
-                height: 335,
-                borderRadius: 25,
-                padding: '5%',
-                margin: '5%',
-                // alignContent: 'center',
-                // justifyContent: "center",
-                borderWidth: 1,
-                borderRadius: 20,
-                borderColor: '#000',
-                borderBottomWidth: 0,
-                shadowColor: '#000000',
-                shadowOffset: {width: 0, height: 3},
-                shadowOpacity: 0.9,
-                shadowRadius: 20,
-                elevation: 5,
-              }}>
-              <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate('CollectionAndSKUFilter', {
-                    onSelect: this.onSelect,
-                    flagtoShow: 'collection',
-                    navigationFlaggg: 'createOrder',
-                  })
-                }>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: 40,
-                    margin: 0,
-                    marginTop: 10,
-                  }}>
+
+            <ScrollView>
+              <KeyboardAvoidingView
+                keyboardVerticalOffset={50}
+                style={{
+                  backgroundColor: '#fff',
+                  height: 335,
+                  borderRadius: 25,
+                  padding: '5%',
+                  margin: '5%',
+                  // alignContent: 'center',
+                  // justifyContent: "center",
+                  borderWidth: 1,
+                  borderRadius: 20,
+                  borderColor: '#000',
+                  borderBottomWidth: 0,
+                  shadowColor: '#000000',
+                  shadowOffset: {width: 0, height: 3},
+                  shadowOpacity: 0.9,
+                  shadowRadius: 20,
+                  elevation: 5,
+                }}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('CollectionAndSKUFilter', {
+                      onSelect: this.onSelect,
+                      flagtoShow: 'collection',
+                      navigationFlaggg: 'createOrder',
+                    })
+                  }>
                   <View
                     style={{
-                      flex: 1,
-                      maxWidth: 414,
-                      backgroundColor: null,
                       flexDirection: 'row',
-                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      height: 40,
+                      margin: 0,
+                      marginTop: 10,
                     }}>
-                    <Text
-                      style={{paddingLeft: 13, color: 'black', fontSize: 12}}>
-                      {this.state.collectionString}
-                    </Text>
                     <View
                       style={{
-                        width: 15,
-                        height: 15,
-                        justifyContent: 'flex-end',
-                        marginRight: 25,
-                        marginTop: 6,
+                        flex: 1,
+                        maxWidth: 414,
+                        backgroundColor: null,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
                       }}>
-                      <Image
-                        source={require('../../src/assets/images/outline_chevron_right_black_48.png')}
-                        style={{width: 26, height: 26}}
-                      />
+                      <Text
+                        style={{paddingLeft: 13, color: 'black', fontSize: 12}}>
+                        {this.state.collectionString}
+                      </Text>
+                      <View
+                        style={{
+                          width: 15,
+                          height: 15,
+                          justifyContent: 'flex-end',
+                          marginRight: 25,
+                          marginTop: 6,
+                        }}>
+                        <Image
+                          source={require('../../src/assets/images/outline_chevron_right_black_48.png')}
+                          style={{width: 26, height: 26}}
+                        />
+                      </View>
                     </View>
                   </View>
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
 
-              <View
-                style={{
-                  marginLeft: 13,
-                  marginTop: 3,
-                  backgroundColor: 'gray',
-                  marginRight: 13,
-                  height: 1,
-                  marginBottom: 0,
-                }}></View>
-
-              <Text style={styles.errorHint}>{this.state.collectionError}</Text>
-
-              <TouchableOpacity onPress={() => this.selectSKU()}>
                 <View
                   style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: 40,
-                    margin: 0,
-                    marginTop: 10,
-                  }}>
+                    marginLeft: 13,
+                    marginTop: 3,
+                    backgroundColor: 'gray',
+                    marginRight: 13,
+                    height: 1,
+                    marginBottom: 0,
+                  }}></View>
+
+                <Text style={styles.errorHint}>
+                  {this.state.collectionError}
+                </Text>
+
+                <TouchableOpacity onPress={() => this.selectSKU()}>
                   <View
                     style={{
-                      flex: 1,
-                      maxWidth: 414,
-                      backgroundColor: null,
                       flexDirection: 'row',
-                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      height: 40,
+                      margin: 0,
+                      marginTop: 10,
                     }}>
-                    <Text
-                      style={{paddingLeft: 13, color: 'black', fontSize: 12}}>
-                      {this.state.SKUstring}
-                    </Text>
                     <View
                       style={{
-                        width: 15,
-                        height: 15,
-                        justifyContent: 'flex-end',
-                        marginRight: 25,
-                        marginTop: 6,
+                        flex: 1,
+                        maxWidth: 414,
+                        backgroundColor: null,
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
                       }}>
-                      <Image
-                        source={require('../../src/assets/images/outline_chevron_right_black_48.png')}
-                        style={{width: 26, height: 26}}
-                      />
+                      <Text
+                        style={{paddingLeft: 13, color: 'black', fontSize: 12}}>
+                        {this.state.SKUstring}
+                      </Text>
+                      <View
+                        style={{
+                          width: 15,
+                          height: 15,
+                          justifyContent: 'flex-end',
+                          marginRight: 25,
+                          marginTop: 6,
+                        }}>
+                        <Image
+                          source={require('../../src/assets/images/outline_chevron_right_black_48.png')}
+                          style={{width: 26, height: 26}}
+                        />
+                      </View>
                     </View>
                   </View>
-                </View>
-              </TouchableOpacity>
+                </TouchableOpacity>
 
-              <View
-                style={{
-                  marginLeft: 13,
-                  marginTop: 3,
-                  backgroundColor: 'gray',
-                  marginRight: 13,
-                  height: 1,
-                  marginBottom: 0,
-                }}></View>
+                <View
+                  style={{
+                    marginLeft: 13,
+                    marginTop: 3,
+                    backgroundColor: 'gray',
+                    marginRight: 13,
+                    height: 1,
+                    marginBottom: 0,
+                  }}></View>
 
-              <Text style={styles.errorHint}>{this.state.skuError}</Text>
+                <Text style={styles.errorHint}>{this.state.skuError}</Text>
 
-              <TextInput
-                placeholder="Quantity *"
-                onChangeText={text => this.setQuantity(text)}
-                style={styles.login_text_input}
-                autoCapitalize="none"
-                placeholderTextColor="grey"
-                keyboardType="number-pad"
-                value={this.state.quantityString}
-              />
+                <TextInput
+                  placeholder="Quantity *"
+                  onChangeText={text => this.setQuantity(text)}
+                  style={styles.login_text_input}
+                  autoCapitalize="none"
+                  placeholderTextColor="grey"
+                  keyboardType="number-pad"
+                  value={this.state.quantityString}
+                />
 
-              <Text style={styles.errorHint}>{this.state.quantityError}</Text>
+                <Text style={styles.errorHint}>{this.state.quantityError}</Text>
 
-              {/* <Text style={{fontSize:15,
+                {/* <Text style={{fontSize:15,
         color:'grey',
         marginLeft: 13,
         marginTop:20,}}>Remark : </Text>
@@ -475,37 +464,38 @@ export default class CreateOrder extends Component {
                 // value = {'SDF Building, 4th Floor, Software Technology Park, GP Block, Sector V, Bidhannagar, Kolkata, West Bengal 700091'}
                 ></TextInput> */}
 
-              <TouchableOpacity
-                style={{
-                  // fontSize: 18,
-                  // marginLeft: 50,
-                  // marginRight: 50,
-                  width: '94%',
-                  height: 55,
-                  backgroundColor: '#252324',
-                  marginTop: 30,
-                  color: '#f55656',
-                  alignSelf: 'center',
-                  marginBottom: 14,
-                  borderRadius: 10,
-                }}
-                onPress={() => this.showSubmitButton()}>
-                <Text
+                <TouchableOpacity
                   style={{
-                    fontSize: 18,
+                    // fontSize: 18,
+                    // marginLeft: 50,
+                    // marginRight: 50,
+                    width: '94%',
+                    height: 55,
+                    backgroundColor: '#252324',
+                    marginTop: 30,
+                    color: '#f55656',
                     alignSelf: 'center',
-                    alignItems: 'center',
-                    paddingTop: 14,
-                    color: '#ffff',
-                    fontWeight: '500',
-                  }}>
-                  Submit
-                </Text>
-              </TouchableOpacity>
-              {this.state.showFlatList == true && this.showSubmitButton()}
-            </KeyboardAvoidingView>
-          </ScrollView>
-        </ImageBackground>
+                    marginBottom: 14,
+                    borderRadius: 10,
+                  }}
+                  onPress={() => this.showSubmitButton()}>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      alignSelf: 'center',
+                      alignItems: 'center',
+                      paddingTop: 14,
+                      color: '#ffff',
+                      fontWeight: '500',
+                    }}>
+                    Submit
+                  </Text>
+                </TouchableOpacity>
+                {this.state.showFlatList == true && this.showSubmitButton()}
+              </KeyboardAvoidingView>
+            </ScrollView>
+          </ImageBackground>
+        </SafeAreaView>
       </>
     );
   }
@@ -522,6 +512,8 @@ const styles = StyleSheet.create({
   login_text_input: {
     marginLeft: 10,
     marginRight: 10,
+    marginBottom: 10,
+    paddingBottom: 10,
     // backgroundColor: '#dcdedc',
     borderBottomColor: '#000',
     borderBottomWidth: 1,

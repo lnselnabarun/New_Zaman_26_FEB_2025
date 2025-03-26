@@ -120,10 +120,11 @@ const MyProfile = () => {
   };
 
   return (
+    <SafeAreaView style={{flex:1}}>
     <View behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
       <StatusBar animated={true} backgroundColor="grey" />
       <ImageBackground source={require('../../src/assets/images/Zaman_BG1.jpg')} style={Styles.login_main}>
-        <SafeAreaView style={{...Styles.dashboard_main_header, justifyContent:"space-between"}}>
+        <View style={{...Styles.dashboard_main_header, justifyContent:"space-between"}}>
           <View style={Styles.dashboard_main_headers}>
             <TouchableOpacity onPress={() => navigation.goBack(null)}>
               <Image
@@ -146,7 +147,7 @@ const MyProfile = () => {
           <TouchableOpacity style={{paddingLeft:20}} onPress={() => navigation.navigate('DeleteAccount')}>
              <MaterialCommunityIcons name ="delete-alert" color="#f74040" size={30} />
             </TouchableOpacity>
-        </SafeAreaView>
+        </View>
         <ScrollView>
           <View style={{ flexDirection: 'column', justifyContent: 'space-around', alignSelf: 'center', alignItems: 'center' }}>
             <Image style={{ width: 120, height: 120, marginTop: 20 }} source={require('../../src/assets/images/zaman_logo.jpg')} />
@@ -180,6 +181,7 @@ const MyProfile = () => {
         </ScrollView>
       </ImageBackground>
     </View>
+    </SafeAreaView>
   );
 };
 

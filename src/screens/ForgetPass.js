@@ -81,10 +81,11 @@ const ForgetPass = () => {
 
   return (
     <>
+    <SafeAreaView style={{flex:1}}>
       <ImageBackground
         source={require('../../src/assets/images/Zaman_BG1.jpg')}
         style={{flex: 1, flexDirection: 'column'}}>
-        <SafeAreaView
+        <View
           style={{
             backgroundColor: '#252324',
             height: 60,
@@ -115,7 +116,7 @@ const ForgetPass = () => {
               />
             </TouchableOpacity>
           </View>
-        </SafeAreaView>
+        </View>
         <ScrollView>
           <View
             style={{
@@ -268,6 +269,7 @@ const ForgetPass = () => {
           </View>
         </ScrollView>
       </ImageBackground>
+      </SafeAreaView>
     </>
   );
 };
